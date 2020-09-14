@@ -15,11 +15,20 @@
         <div class="container">
             <div class="dismiss__employee">
                 <h1 class="h1">Уволить сотрудника {{ employee.first_name }} {{ employee.last_name }}?</h1>
-                <form action="" method="post"> {% csrf_token %}
-                        <input type="submit" value="Yes">
+                <div class="confirm__not">
+                    <form action="" method="post"> {% csrf_token %}
+                        <input type="submit" value="Yes" class="button__save">
                     </form>
-                <a href="url {% url 'mpage:staff:index' %}" class="a__main">Cancel</a>
+                    <form action="{% url 'mpage:staff:index' %}">
+                        <input type="submit" value="Cancel" class="button__save">
+                        </form>
+                </div>
             </div>
+        </div>
+    </section>
+    <section class="confirm">
+        <div class="container">
+
         </div>
     </section>
 </main>

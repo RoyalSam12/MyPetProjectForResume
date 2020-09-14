@@ -128,9 +128,24 @@ body {
 }
 .dismiss {
     padding: 55px 5%;
+
 }
-.dismiss__employee {
+.confirm__not {
     display: flex;
-    align-items: flex-end;
     justify-content: center;
+    align-content: center;
+}
+
+.button__save {
+    color: #000000;
+    background-color: #a0a0a0;
+    border-radius: 5px;
+    justify-items: center;
+    width: 75px;
+    height: 30px;
+    transition: background-color 0.3s ease-in;
+
+}
+.button__save:hover {
+    background-color: #b0b0b0;
 }
