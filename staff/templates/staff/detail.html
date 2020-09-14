@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'staff/detail.css' %}">
+    <title>{{ employee.first_name }} {{ employee.last_name }}</title>
+</head>
+<body>
+{% include 'staff/basehead.html' %}
+<main class="content">
+    <section class="emp">
+        <div class="container">
+            <div class="employer">
+                <h1 class="h1">{{ employee.first_name }} {{ employee.last_name }}</h1>
+            </div>
+        </div>
+    </section>
+</main>
+{% include 'staff/basefootler.html' %}
+</body>
+</html>

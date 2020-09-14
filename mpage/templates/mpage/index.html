@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'mpage/index.css' %}">
+</head>
+<body>
+{% include 'mpage/basehead.html' %}
+<main class="content">
+    <section class="about">
+        <div class="container">
+            <div class="about_me">
+                <h1 class="h1">Карта страницы</h1>
+                <dl class="p__main">
+                    <dt>Содержание:</dt>
+                    <dd>
+                        <ul>
+                            <li><a href="#h1__skill" class="a__main">Skills</a></li>
+                            <li><a href="#h1__apps" class="a__main">Application description</a></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </section>
+    <section class="skill">
+        <div class="container">
+            <div class="my_skill">
+                <h1 class="h1" id="h1__skill">Skills</h1>
+                <p class="p__main">На данный момент владею:</p>
+                <ul class="p__main">
+                    <li>Python 3
+                        <ul>
+                            <li>Понимание алгоритмов</li>
+                            <li>Функциональное программирование</li>
+                            <li>ООП</li>
+                            <li>и т.д.</li>
+                        </ul>
+                    </li>
+                    <li>Django experience</li>
+                    <li>HTML/CSS experience</li>
+                    <li>Sql experience</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="app">
+        <div class="container">
+            <div class="app__desc">
+                <h1 class="h1" id="h1__apps">Application description</h1>
+            </div>
+        </div>
+    </section>
+</main>
+{% include 'mpage/basefootler.html' %}
+</body>
+</html>

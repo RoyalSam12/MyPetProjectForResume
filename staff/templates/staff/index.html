@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'staff/index.css' %}">
+</head>
+<body>
+{% include 'staff/basehead.html' %}
+<main class="content">
+
+
+    <section class="list__of__employer">
+        <div class="container">
+            <div class="emp__list">
+                <h1 class="h1">Список сотрудников</h1>
+                {% if error_message %}
+                    <p>Выбирите обьект для сортировки</p>
+                {% endif %}
+                {% if employee_list %}
+                    <table class="table__main">
+                        <form action="." method="post"> {% csrf_token %}
+                            <input type="submit" name="save" id="save" value="Отсортировать" class="button__save__top">
+                            <tr>
+                                <th class="th__top">
+                                    <input type="radio" name="th_choice" value="first_name" id="first_name">
+                                    <label for="first_name">Имя сотрудника</label></th>
+                                <th class="th__top"><input type="radio" name="th_choice"
+                                                           value="last_name" id="last_name"><label for="last_name">Фамилия
+                                    сотрудника</label></th>
+                                <th class="th__top"><input type="radio" name="th_choice" value="post"
+                                                           id="post"><label for="post">Должность</label></th>
+                                <th class="th__top"><input type="radio" name="th_choice" value="salary"
+                                                           id="salary"> <label for="salary">Зарплата($)</label></th>
+                                <th class="th__top">Дополнительная Информация</th>
+                                <th class="th__top">Уволить</th>
+                            </tr>
+                        </form>
+                        {% for emp in employee_list %}
+                            <tr>
+                                <td>{{ emp.first_name }}</td>
+                                <td>{{ emp.last_name }}</td>
+                                <td>{{ emp.post }}</td>
+                                <td>{{ emp.salary }}</td>
+                                <th><a href="{% url 'mpage:staff:detail' emp.id %}" class="a__main">Детальней</a></th>
+                                <th><a href="{% url 'mpage:staff:dismiss' emp.id %}" class="a__main">Уволить</a></th>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <h1 class="error__m">Список сотрудников пуст</h1>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+
+    <section class="post__met">
+        <div class="container">
+            <div class="post__method">
+                <h2 class="h2">Добавить сотрудника</h2>
+                <form action="{% url 'mpage:staff:index' %}" method="post" class="form__add"> {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" name="save" id="save" value="Добавить" class="button__save">
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+{% include 'staff/basefootler.html' %}
+</body>
+</html>
