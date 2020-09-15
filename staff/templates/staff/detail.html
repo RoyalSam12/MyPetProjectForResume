@@ -24,14 +24,21 @@
                 <div class="employer">
                     {{ employee.detail_set.get.detail_text }}
                 </div>
-
                 <div class="email">
                     {{ employee.detail_set.get.e_mail }}
                 </div>
                 <div class="address">
                     {{ employee.detail_set.get.address }}
                 </div>
-                <div class="photo">
+            </div>
+        </section>
+        <section class="update">
+            <div class="container">
+                <div class="update__data">
+                    <form action="." method="post"> {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Сохранить" class="button__save">
+                    </form>
 
                 </div>
             </div>

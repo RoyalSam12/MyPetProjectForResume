@@ -8,9 +8,22 @@ from .models import Employee
 from .forms import EmployeeForm, DetailForm
 
 
-class DetailView(generic.DetailView):
-    model = Employee
+def detail(requests, pk):
+    form = DetailForm
+    employee = Employee.objects.get(id=pk)
+    if requests.method == 'POST':
+        employee.detail_set.update(
+            detail_text=requests.POST['detail_text'],
+            address=requests.POST['address'],
+            e_mail=requests.POST['e_mail'],
+            employee=pk
+        )
     template_name = 'staff/detail.html'
+    context = {
+        'form': form,
+        'employee': employee
+    }
+    return render(requests, template_name, context)
 
 
 def add_info(requests, pk):
