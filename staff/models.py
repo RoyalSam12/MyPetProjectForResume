@@ -7,9 +7,14 @@ class Employee(models.Model):
     post = models.CharField(max_length=40)
     salary = models.PositiveIntegerField(default=0, blank=False)
 
+    def __str__(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+
 
 class Detail(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    detail_text = models.CharField(max_length=300)
-    e_mail = models.EmailField()
-    address = models.CharField(max_length=150)
+    detail_text = models.CharField(max_length=300, null=True)
+    e_mail = models.EmailField(null=True)
+    address = models.CharField(max_length=150, null=True)
+    photo = models.ImageField(null=True, blank=True)
+

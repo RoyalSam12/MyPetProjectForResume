@@ -18,6 +18,43 @@
             </div>
         </div>
     </section>
+    {% if employee.detail_set.get_queryset %}
+        <section class="emp">
+            <div class="container">
+                <div class="employer">
+                    {{ employee.detail_set.get.detail_text }}
+                </div>
+
+                <div class="email">
+                    {{ employee.detail_set.get.e_mail }}
+                </div>
+                <div class="address">
+                    {{ employee.detail_set.get.address }}
+                </div>
+                <div class="photo">
+
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section class="no__detail">
+            <div class="container">
+                <div class="no__detail__emp">
+                    <h2 class="h2">Про этого работника более детальной информации нет</h2>
+                    <p class="p__main">Желаете добавить?</p>
+                </div>
+            </div>
+        </section>
+        <section class="add__info">
+            <div class="container">
+                <div class="add__information">
+                    <a href="{% url 'mpage:staff:add' employee.id %}" class="a__main">Добавить информацию</a>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
 </main>
 {% include 'staff/basefootler.html' %}
 </body>

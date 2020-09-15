@@ -20,7 +20,7 @@
     bottom: 45px;
     color: #000000;
     display: flex;
-    background-color: #707070;
+    background-color: rgba(119, 119, 119, 0.5);
     border-radius: 15px;
     justify-content: center;
     align-items: center;
@@ -168,6 +168,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.no__detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.button__save {
+    color: #000000;
+    background-color: #a0a0a0;
+    border-radius: 5px;
+    width: 75px;
+    height: 30px;
+    transition: background-color 0.3s ease-in;
+
+}
+
+.button__save:hover {
+    background-color: #b0b0b0;
+}
+
+.add__info {
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.no__detail {
+    padding: 0 5%;
+}
+.add__info {
+    padding: 0 5%;
+}
+.emp{
+    padding: 75px 5%;
 }
 
 

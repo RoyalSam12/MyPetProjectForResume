@@ -1,11 +1,34 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.utils.datastructures import MultiValueDictKeyError
 from django.views import generic
 
 from .models import Employee
-from .forms import EmployeeForm
+from .forms import EmployeeForm, DetailForm
+
+
+class DetailView(generic.DetailView):
+    model = Employee
+    template_name = 'staff/detail.html'
+
+
+def add_info(requests, pk):
+    form = DetailForm()
+    employee = Employee.objects.get(id=pk)
+    if requests.method == "POST":
+        employee.detail_set.create(
+            detail_text=requests.POST['detail_text'],
+            address=requests.POST['address'],
+            e_mail=requests.POST['e_mail'],
+            employee=pk
+        )
+        return HttpResponseRedirect(reverse('mpage:staff:detail', args=[pk]))
+    context = {
+        'employee_inf': pk,
+        'form': form
+    }
+    return render(requests, 'staff/add_info.html', context)
 
 
 def index(requests):
@@ -27,13 +50,15 @@ def index(requests):
                     choice = '-' + choice
                     obj = Employee.objects.order_by(choice)
                     form = EmployeeForm()
+                elif choice == 'salary':
+                    choice = '-' + choice
+                    obj = Employee.objects.order_by(choice)
+                    form = EmployeeForm()
                 else:
                     obj = Employee.objects.order_by(choice)
                     form = EmployeeForm()
             except MultiValueDictKeyError:
                 error = 'Выберете по которому ряду желаете отсортировать таблицу'
-        elif requests.POST.get('save') == 'Уволить':
-            print('gello')
 
     context = {
         'employee_list': obj,
@@ -41,6 +66,17 @@ def index(requests):
         'error_message': error
     }
     return render(requests, 'staff/index.html', context)
+
+
+def dismiss(requests, pk):
+    obj = get_object_or_404(Employee, id=pk)
+    if requests.method == 'POST':
+        obj.delete()
+        return HttpResponseRedirect(reverse('mpage:staff:index'))
+    context = {
+        'employee': obj,
+    }
+    return render(requests, 'staff/dismiss.html', context)
 
 
 '''
@@ -78,19 +114,3 @@ def index(requests):
     }
     return render(requests, 'staff/index.html', context)
 '''  # Пробвная попытка вечером
-
-
-class DetailView(generic.DetailView):
-    model = Employee
-    template_name = 'staff/detail.html'
-
-
-def dismiss(requests, pk):
-    obj = get_object_or_404(Employee, id=pk)
-    if requests.method == 'POST':
-        obj.delete()
-        return HttpResponseRedirect(reverse('mpage:staff:index'))
-    context = {
-        'employee': obj,
-    }
-    return render(requests, 'staff/dismiss.html', context)

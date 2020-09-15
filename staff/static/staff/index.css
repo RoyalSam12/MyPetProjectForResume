@@ -20,7 +20,7 @@
     bottom: 45px;
     color: #000000;
     display: flex;
-    background-color: #707070;
+    background-color: rgba(119, 119, 119, 0.5);
     border-radius: 15px;
     justify-content: center;
     align-items: center;
@@ -174,7 +174,7 @@ body {
 }
 
 .post__met {
-    padding: 25px 5%;
+    padding: 55px 5%;
 }
 
 .form__add {
@@ -212,6 +212,7 @@ body {
     background-color: #b0b0b0;
 
 }
+
 
 
 

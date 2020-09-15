@@ -18,7 +18,7 @@
     bottom: 45px;
     color: #000000;
     display: flex;
-    background-color: #707070;
+    background-color: rgba(119, 119, 119, 0.5);
     border-radius: 15px;
     justify-content: center;
     align-items: center;
@@ -127,7 +127,7 @@ body {
     color: #f5f5f5;
 }
 .dismiss {
-    padding: 55px 5%;
+    padding: 75px 5%;
 
 }
 .confirm__not {
@@ -149,3 +149,4 @@ body {
 .button__save:hover {
     background-color: #b0b0b0;
 }
+

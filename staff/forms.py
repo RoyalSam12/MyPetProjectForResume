@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Employee
+from .models import Employee, Detail
 
 
 class EmployeeForm(forms.ModelForm):
@@ -26,4 +26,14 @@ class EmployeeForm(forms.ModelForm):
             return last_name
         else:
             raise forms.ValidationError('Фамилия должно начитнатся с большой буквы')
+
+
+class DetailForm(forms.ModelForm):
+    class Meta:
+        model = Detail
+        fields = [
+            'detail_text',
+            'address',
+            'e_mail'
+        ]
 
