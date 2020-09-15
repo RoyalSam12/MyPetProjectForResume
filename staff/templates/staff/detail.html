@@ -11,35 +11,36 @@
 <body>
 {% include 'staff/basehead.html' %}
 <main class="content">
-    <section class="emp">
-        <div class="container">
-            <div class="employer">
-                <h1 class="h1">{{ employee.first_name }} {{ employee.last_name }}</h1>
-            </div>
-        </div>
-    </section>
+
     {% if employee.detail_set.get_queryset %}
         <section class="emp">
             <div class="container">
                 <div class="employer">
-                    {{ employee.detail_set.get.detail_text }}
-                </div>
-                <div class="email">
-                    {{ employee.detail_set.get.e_mail }}
-                </div>
-                <div class="address">
-                    {{ employee.detail_set.get.address }}
+                    <h1 class="h1">{{ employee.first_name }} {{ employee.last_name }}</h1>
+                    <div class="detail">
+                        <h2 class="h2">Более детальная информация о сотруднике</h2>
+                        {{ employee.detail_set.get.detail_text }}
+                    </div>
+
+                    <div class="email">
+                        <h2 class="h2">Email сотрудника</h2>
+                        {{ employee.detail_set.get.e_mail }}
+                    </div>
+                    <div class="address">
+                        <h2 class="h2">Адресс сотрудника</h2>
+                        {{ employee.detail_set.get.address }}
+                    </div>
                 </div>
             </div>
         </section>
         <section class="update">
             <div class="container">
                 <div class="update__data">
+                    <h2 class="h2">Обновить информацию</h2>
                     <form action="." method="post"> {% csrf_token %}
                         {{ form.as_p }}
                         <input type="submit" value="Сохранить" class="button__save">
                     </form>
-
                 </div>
             </div>
         </section>
@@ -47,6 +48,7 @@
         <section class="no__detail">
             <div class="container">
                 <div class="no__detail__emp">
+                    <h1 class="h1">{{ employee.first_name }} {{ employee.last_name }}</h1>
                     <h2 class="h2">Про этого работника более детальной информации нет</h2>
                     <p class="p__main">Желаете добавить?</p>
                 </div>

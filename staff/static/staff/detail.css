@@ -181,7 +181,7 @@ body {
     color: #000000;
     background-color: #a0a0a0;
     border-radius: 5px;
-    width: 75px;
+    width: 85px;
     height: 30px;
     transition: background-color 0.3s ease-in;
 
@@ -198,14 +198,27 @@ body {
     text-align: center;
 }
 .no__detail {
-    padding: 0 5%;
+    padding: 55px 5%;
 }
 .add__info {
     padding: 0 5%;
 }
-.emp{
-    padding: 75px 5%;
+.emp_{
+    padding: 55px 5%;
 }
+.update{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 15px;
+}
+.employer {
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    flex-flow: column;
+}
+
 
 
 
