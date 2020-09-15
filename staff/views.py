@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.utils.datastructures import MultiValueDictKeyError
-from django.views import generic
+
 
 from .models import Employee
 from .forms import EmployeeForm, DetailForm
@@ -45,7 +45,7 @@ def add_info(requests, pk):
 
 
 def index(requests):
-    obj = Employee.objects.order_by('-post')
+    obj = Employee.objects.order_by('-salary')
     form = EmployeeForm()
     error = ''
 
@@ -54,7 +54,6 @@ def index(requests):
             form = EmployeeForm(requests.POST or None)
             if form.is_valid():
                 form.save()
-                form = EmployeeForm()
                 return HttpResponseRedirect(reverse('mpage:staff:index'))
         elif requests.POST.get('save') == 'Отсортировать':
             try:
