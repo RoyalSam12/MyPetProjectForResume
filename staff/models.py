@@ -16,5 +16,5 @@ class Detail(models.Model):
     detail_text = models.CharField(max_length=300, null=True)
     e_mail = models.EmailField(null=True)
     address = models.CharField(max_length=150, null=True)
-    photo = models.ImageField(null=True, blank=True)
+
 
