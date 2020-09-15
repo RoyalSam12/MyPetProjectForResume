@@ -3,7 +3,7 @@
 <head>{% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     <script src="{% static 'js/index.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'staff/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'staff/add.css' %}">
     <meta charset="UTF-8">
     <title>Добавить информацию о сотруднике</title>
 </head>
@@ -14,10 +14,15 @@
         <div class="container">
             <div class="post__method">
                 <h1 class="h1">Добавить сотрудника</h1>
-                <form action="{% url 'mpage:staff:add' employee_inf %}" method="POST" class="form__add"> {% csrf_token %}
-                    {{ form.as_p }}
-                    <input type="submit" name="save" id="save" value="Добавить" class="button__save">
-                </form>
+                <div class="post__method__add">
+                    <form action="{% url 'mpage:staff:add' employee_inf %}" method="POST"
+                          class="form__add"> {% csrf_token %}
+                        <h2 class="h2">Detail text</h2>
+                        {{ form.as_p }}
+                        <input type="submit" name="save" id="save" value="Добавить" class="button__save">
+
+                    </form>
+                </div>
             </div>
         </div>
     </section>

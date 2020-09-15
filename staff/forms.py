@@ -29,6 +29,17 @@ class EmployeeForm(forms.ModelForm):
 
 
 class DetailForm(forms.ModelForm):
+    detail_text = forms.CharField(
+        label='',
+        widget=forms.Textarea(
+            attrs={
+                'class': 'text__area',
+                'rows': 20,
+                'cols': 120
+            }
+        )
+    )
+
     class Meta:
         model = Detail
         fields = [
@@ -36,4 +47,3 @@ class DetailForm(forms.ModelForm):
             'address',
             'e_mail'
         ]
-
