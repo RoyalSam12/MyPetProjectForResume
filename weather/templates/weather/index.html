@@ -6,25 +6,57 @@
     {% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     <script src="{% static 'js/index.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'weather/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'weather/index.css' %}">
 </head>
 <body>
 {% include 'weather/basehead.html' %}
 <main class="content">
-    <section class="weather">
-        <div class="container">
-            <div class="weather__city">
-                <h1 class="h1">Узнать погоду</h1>
-                <form action="."> {% csrf_token %}
-                    <label for="discover">В каком городе хотите узнать погоду?</label>
-                    <input type="text" name="text"
-                    id="discover"
-                    placeholder="Город">
-                    <input type="submit" name="ask" value="city">
-                </form>
+    {% if get_info == True %}
+        <section class="weather">
+            <div class="container">
+                <div class="head"><h1 class="h1">Погода в городе {{ city_name }}</h1></div>
+                <div class="weather__city__get">
+                    <p class="p__main"><em class="p__main__em">Описание:</em> {{ weather_description }}</p>
+                    <p class="p__main"><em class="p__main__em">Температура:</em> {{ weather_temp }}</p>
+                    <p class="p__main"><em class="p__main__em">Чувствуется как:</em> {{ weather_feels_temp }}</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    {% elif get_info == False %}
+        <section class="weather">
+            <div class="container">
+                <div class="weather__city">
+                    <h1 class="h1">Узнать погоду</h1>
+                    <h2 class="h2">{{ error }}</h2>
+                    <form action="."> {% csrf_token %}
+                        <label for="discover">В каком городе хотите узнать погоду?</label>
+                        <input type="text" name="text"
+                               id="discover"
+                               placeholder="Город">
+                        <input type="submit" name="ask" value="Узнать" class="button__save">
+                    </form>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section class="weather">
+            <div class="container">
+                <div class="weather__city">
+                    <h1 class="h1">Узнать погоду</h1>
+
+                    <form action="."> {% csrf_token %}
+                        <label for="discover">В каком городе хотите узнать погоду?</label>
+
+                        <input type="text" name="text"
+                               id="discover"
+                               placeholder="Город">
+                        <input type="submit" name="ask" value="Узнать" class="button__save">
+                    </form>
+                </div>
+            </div>
+        </section>
+    {% endif %}
 </main>
 {% include 'weather/basefootler.html' %}
 </body>

@@ -12,16 +12,16 @@ def check_weather(city):
 
     re = requests.get(api_url, params=params)
     if re.status_code == 404:
-        data_for_views = {'error': 'Информации нет (Название города должно быть на английском)'}
+        data_for_views = {'get_info': False, 'error': 'Данные введены некорректно'}
         return data_for_views
     else:
         data = re.json()
         data_for_views = dict()
         data_for_views['get_info'] = True
+        data_for_views['city_name'] = data['name']
         data_for_views['weather_description'] = data['weather'][0].get('description')
         data_for_views['weather_temp'] = data['main'].get('temp')
         data_for_views['weather_feels_temp'] = data['main'].get('feels_like')
         data_for_views['weather_max_temp'] = data['main'].get('temp_max')
+
         return data_for_views
-
-

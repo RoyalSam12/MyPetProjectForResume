@@ -3,7 +3,6 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.utils.datastructures import MultiValueDictKeyError
 
-
 from .models import Employee
 from .forms import EmployeeForm, DetailForm
 

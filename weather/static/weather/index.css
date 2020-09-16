@@ -139,3 +139,29 @@ body {
 .button__save:hover {
     background-color: #b0b0b0;
 }
+.weather {
+    padding: 55px 5%;
+
+}
+.weather__city {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+}
+
+.weather__city__get{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-flow: column;
+}
+.weather__city__get + .h1{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+
+}
+.p__main__em {
+    color: #4c4c4c;
+}
