@@ -9,6 +9,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'weather.apps.WeatherConfig',
     'mpage.apps.MpageConfig',
     'staff.apps.StaffConfig',
     'django.contrib.admin',

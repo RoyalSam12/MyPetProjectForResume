@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Погода</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <script src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'weather/base.css' %}">
+</head>
+<body>
+{% include 'weather/basehead.html' %}
+<main class="content">
+    <section class="weather">
+        <div class="container">
+            <div class="weather__city">
+                <h1 class="h1">Узнать погоду</h1>
+                <form action="."> {% csrf_token %}
+                    <label for="discover">В каком городе хотите узнать погоду?</label>
+                    <input type="text" name="text"
+                    id="discover"
+                    placeholder="Город">
+                    <input type="submit" name="ask" value="city">
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+{% include 'weather/basefootler.html' %}
+</body>
+</html>
