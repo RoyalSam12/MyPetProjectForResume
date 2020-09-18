@@ -22,6 +22,13 @@
                 </div>
             </div>
         </section>
+        <section class="info">
+            <div class="container">
+                <div class="more__info">
+                    <a href="{% url 'mpage:week' city_name lon lat %}" class="a__main">Прогноз погоды на неделю</a>
+                </div>
+            </div>
+        </section>
 
     {% elif get_info == False %}
         <section class="weather">

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .weather_check import check_weather
+from .weather_check import check_weather, check_weather_daily
 
 
 def weather(requests):
@@ -10,3 +10,8 @@ def weather(requests):
     else:
         context = {}
         return render(requests, 'weather/index.html', context)
+
+
+def weather_week(requests, city, lon, lat):
+    context = check_weather_daily(city=city, lon=lon, lat=lat)
+    return render(requests, 'weather/week.html', context)
