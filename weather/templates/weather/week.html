@@ -11,7 +11,39 @@
 <body>
 {% include 'weather/basehead.html' %}
 <main class="content">
+    <section class="weather">
+        <div class="container">
+            <div class="weather__more">
+                <h1 class="h1">Погода на неделю</h1>
+                <table class="table__main">
+                    <tr>
+                        <th colspan="13" class="p__main"><h2 class="h2">{{ city }}</h2></th>
+                    </tr>
+                    <tr>
+                        <th>День недели</th>
+                        <th>Описание</th>
+                        <th>Утром / Чувствуется как</th>
+                        <th>Днём / Чувствуется как</th>
+                        <th>Вечером / Чувствуется как</th>
+                        <th>Ночью / Чувствуется как</th>
+                        <th>Максимальная температура / Минимальная</th>
 
+                    </tr>
+                    {% for day in weather.values %}
+                        <tr>
+                            <td>{{ day.day_of_week }}</td>
+                            <td>{{ day.weather_description }}</td>
+                            <td>{{ day.temp_morn }} / {{ day.fells_temp_morn }}</td>
+                            <td>{{ day.temp_day }} / {{ day.fells_temp_day }}</td>
+                            <td>{{ day.temp_eve }} / {{ day.fells_temp_eve }}</td>
+                            <td>{{ day.temp_night }} / {{ day.fells_temp_night }}</td>
+                            <td>{{ day.temp_max }} / {{ day.temp_min }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </section>
 </main>
 {% include 'weather/basefootler.html' %}
 </body>

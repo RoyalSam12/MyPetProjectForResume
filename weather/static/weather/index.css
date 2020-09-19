@@ -186,11 +186,17 @@ body {
 .p__main__em {
     color: #4c4c4c;
 }
-
+.head2 {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
 .info {
-    padding: 0 5%;
+    padding: 55px 5%;
 }
 
 .more__info {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

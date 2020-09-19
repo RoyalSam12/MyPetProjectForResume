@@ -30,7 +30,7 @@ def check_weather(city):
         return data_for_views
 
 
-def check_weather_daily(city, lon, lat):
+def check_weather_daily(lon, lat):
     date = {0: 'Пн', 1: 'Вт', 2: 'Cр', 3: 'Чт', 4: 'Пт', 5: 'Сб', 6: 'Вс'}
     date_month = {
         1: 'Января', 2: 'Февраля', 3: 'Марта',
@@ -58,20 +58,18 @@ def check_weather_daily(city, lon, lat):
                 date_now.year,
                 date.get(date_now.weekday())
             ),
-            'city': city,
             'temp_day': day_info['temp'].get('day'),
             'temp_min': day_info['temp'].get('min'),
             'temp_max': day_info['temp'].get('max'),
             'temp_night': day_info['temp'].get('night'),
             'temp_eve': day_info['temp'].get('eve'),
-            'temp_mor': day_info['temp'].get('morn'),
+            'temp_morn': day_info['temp'].get('morn'),
             'fells_temp_day': day_info['feels_like'].get('day'),
             'fells_temp_night': day_info['feels_like'].get('night'),
             'fells_temp_eve': day_info['feels_like'].get('eve'),
-            'fells_temp_mor': day_info['feels_like'].get('morn'),
+            'fells_temp_morn': day_info['feels_like'].get('morn'),
             'weather_description': day_info['weather'][0].get('description').capitalize()
         }
         date_now += timedelta(days=1)
     return data_for_views
 
-print(check_weather_daily('Киев', 30.52, 50.43))

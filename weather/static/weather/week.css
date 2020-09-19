@@ -138,3 +138,18 @@ body {
 .button__save:hover {
     background-color: #b0b0b0;
 }
+
+.weather {
+    padding: 55px 5%;
+}
+
+.table__main {
+    display: flex;
+    justify-content: center;
+    border-spacing: 26px 8px;
+    text-align: center;
+}
+
+.h2 {
+    padding-bottom: 13px;
+}

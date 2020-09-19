@@ -13,5 +13,8 @@ def weather(requests):
 
 
 def weather_week(requests, city, lon, lat):
-    context = check_weather_daily(city=city, lon=lon, lat=lat)
+    context = {
+        'weather': check_weather_daily(lon=lon, lat=lat),
+        'city': city
+    }
     return render(requests, 'weather/week.html', context)
