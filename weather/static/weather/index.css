@@ -13,8 +13,8 @@
 }
 
 .top {
-    width: 90px;
-    height: 90px;
+    width: 75px;
+    height: 75px;
     position: fixed;
     right: 45px;
     bottom: 45px;
@@ -192,10 +192,11 @@ body {
     justify-content: center;
 }
 .info {
-    padding: 55px 5%;
+    padding: 35px 5%;
 }
 
 .more__info {
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;

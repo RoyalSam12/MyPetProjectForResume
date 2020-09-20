@@ -89,39 +89,3 @@ def dismiss(requests, pk):
     }
     return render(requests, 'staff/dismiss.html', context)
 
-
-'''
-def index(requests):
-    obj = Employee.objects.order_by('post')
-    form = EmployeeForm()
-    error = {}
-    if form.is_valid():
-        form.save()
-        form = EmployeeForm()
-    if requests.method == 'POST':
-        form = EmployeeForm(requests.POST or None)
-        if form['first_name']:
-            if form.is_valid():
-                form.save()
-                form = EmployeeForm()
-            else:
-                try:
-                    choice = requests.POST['th_choice']
-                    if choice == 'post':
-                        choice = '-' + choice
-                        obj = Employee.objects.order_by(choice)
-                        form = EmployeeForm()
-                    else:
-                        obj = Employee.objects.order_by(choice)
-                        form = EmployeeForm()
-                except MultiValueDictKeyError:
-                    if form.clean_first_name():
-                        error = 'Hello'
-                    form = EmployeeForm()
-    context = {
-        'employee_list': obj,
-        'form': form,
-        'error_message': error
-    }
-    return render(requests, 'staff/index.html', context)
-'''  # Пробвная попытка вечером

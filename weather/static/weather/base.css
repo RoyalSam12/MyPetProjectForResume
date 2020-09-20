@@ -11,8 +11,8 @@
     flex: 1 1 auto;
 }
 .top {
-    width: 90px;
-    height: 90px;
+    width: 75px;
+    height: 75px;;
     position: fixed;
     right: 45px;
     bottom: 45px;

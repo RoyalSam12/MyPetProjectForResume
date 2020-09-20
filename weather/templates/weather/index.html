@@ -21,6 +21,7 @@
                     <p class="p__main"><em class="p__main__em">Описание:</em> {{ weather_description }}</p>
                     <p class="p__main"><em class="p__main__em">Температура:</em> {{ weather_temp }}</p>
                     <p class="p__main"><em class="p__main__em">Чувствуется как:</em> {{ weather_feels_temp }}</p>
+                    <p class="p__main"><em class="p__main__em">Скорость ветра:</em> {{ wind_speed }}</p>
                 </div>
             </div>
         </section>
@@ -28,6 +29,13 @@
             <div class="container">
                 <div class="more__info">
                     <a href="{% url 'mpage:week' city_name lon lat %}" class="a__main">Прогноз погоды на неделю</a>
+                </div>
+            </div>
+        </section>
+        <section class="info">
+            <div class="container">
+                <div class="more__info">
+                    <a href="{% url 'mpage:hourly' city_name lon lat %}" class="a__main">Прогноз погоды до конца дня</a>
                 </div>
             </div>
         </section>

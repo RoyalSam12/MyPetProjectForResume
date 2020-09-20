@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Погода на неделю</title>
+    <title>Погода на целый день</title>
     {% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     <script src="{% static 'js/index.js' %}"></script>
@@ -14,30 +14,23 @@
     <section class="weather">
         <div class="container">
             <div class="weather__more">
-                <h1 class="h1">Погода на неделю</h1>
+                <h1 class="h1">Погода до конца дня</h1>
                 <table class="table__main">
                     <tr>
-                        <th colspan="13" class="p__main"><h2 class="h2">{{ city }}</h2></th>
+                        <th colspan="13" class="p__main"><h2 class="h2">{{ city }} {{ day_of_week }}</h2></th>
                     </tr>
                     <tr>
-                        <th>День недели</th>
+                        <th>Время</th>
                         <th>Описание</th>
-                        <th>Утром / Чувствуется как</th>
-                        <th>Днём / Чувствуется как</th>
-                        <th>Вечером / Чувствуется как</th>
-                        <th>Ночью / Чувствуется как</th>
-                        <th>Максимальная температура / Минимальная</th>
-
+                        <th>Температура / Чувствуется как</th>
+                        <th>Скорость ветра</th>
                     </tr>
                     {% for day in weather.values %}
                         <tr>
-                            <td>{{ day.day_of_week }}</td>
+                            <td>{{ day.time }}</td>
                             <td>{{ day.weather_description }}</td>
-                            <td>{{ day.temp_morn }} / {{ day.feels_temp_morn }}</td>
                             <td>{{ day.temp_day }} / {{ day.feels_temp_day }}</td>
-                            <td>{{ day.temp_eve }} / {{ day.feels_temp_eve }}</td>
-                            <td>{{ day.temp_night }} / {{ day.feels_temp_night }}</td>
-                            <td>{{ day.temp_max }} / {{ day.temp_min }}</td>
+                            <td>{{ day.wind_speed }}</td>
                         </tr>
                     {% endfor %}
                 </table>
