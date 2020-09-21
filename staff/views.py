@@ -88,4 +88,3 @@ def dismiss(requests, pk):
         'employee': obj,
     }
     return render(requests, 'staff/dismiss.html', context)
-

@@ -17,7 +17,6 @@ def check_weather(city):
         return data_for_views
     else:
         data = re.json()
-        print(data)
         data_for_views = {
             'lon': data['coord']['lon'],
             'lat': data['coord']['lat'],
